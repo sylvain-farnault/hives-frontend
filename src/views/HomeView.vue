@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import HivesList from '../components/HivesList.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <HivesList />
   </main>
 </template>
