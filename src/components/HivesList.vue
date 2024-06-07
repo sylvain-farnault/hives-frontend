@@ -1,9 +1,4 @@
 <script setup>
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
 import HiveItem from './HiveItem.vue'
 </script>
 
@@ -34,9 +29,8 @@ export default {
     console.log('Created bloc');
   },
   mounted() {
-    console.log("mounted bloc");
+    console.log("Mounted bloc");
     this.fetchDataFromApi();
-    console.log(this.globalHives);
   },
   methods: {
     fetchDataFromApi() {

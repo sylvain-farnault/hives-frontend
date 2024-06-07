@@ -12,10 +12,9 @@ import HiveForm from './components/HiveForm.vue'
       <GlobalGreetings msg="Hives Catalog" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Go to index</RouterLink>
+        <HiveForm />
       </nav>
-      <HiveForm />
     </div>
   </header>
 

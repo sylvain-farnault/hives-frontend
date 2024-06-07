@@ -24,7 +24,6 @@ export default {
 	methods: {
 		submitForm(event) {
 			event.preventDefault();
-			console.log(`Submited: Name: ${this.name} | W: ${this.weight}`);
 			this.postDataToApi({"name": this.name, "weight": this.weight, "user_id": 1});
 			event.currentTarget.reset();
 		},
@@ -40,19 +39,17 @@ export default {
 				.catch(error => console.log(error))
         .then(data => {
 					if (typeof data.errors !== 'undefined') {
-						console.log('display form errors');
+						// console.log('display form errors');
 					} else {
-						console.log("Add new hive to dom");
+						// console.log("Add new hive to dom");
 						this.addNewHiveToTheDom(data);
 					}
-          console.log(data);
       })
 			.catch(error => console.log(error));	
 		},
 		addNewHiveToTheDom(hive) {
 			this.globalHives.push(hive);
-			console.log(this.globalHives);
-			
+			// console.log(this.globalHives);
 		}
 	}
 }
