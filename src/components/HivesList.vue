@@ -4,11 +4,18 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import HiveItem from './HiveItem.vue'
 </script>
 
 <template>
   <ul id="hives-list"> {{ hiveListTitle }}
-    
+    <HiveItem
+      v-for="hive in hives"
+      :key="hive.id"
+      :name="hive.name"
+      :weight="hive.weight"
+      :hive-id="hive.id"
+    />
   </ul>
 </template>
 
@@ -29,7 +36,6 @@ export default {
     console.log("mounted bloc");
     this.fetchDataFromApi();
     console.log(this.hives);
-
   },
   methods: {
     fetchDataFromApi() {

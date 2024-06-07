@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HivesList from '../components/HivesList.vue'
+  import HivesList from '../components/HivesList.vue'
 </script>
 
 <template>
