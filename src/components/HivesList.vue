@@ -35,8 +35,8 @@ export default {
   methods: {
     fetchDataFromApi() {
       fetch("http://127.0.0.1:3000/api/v1/hives")
-        .then(response => response.json())
-        .then(data => {
+      .then(response => response.json())
+      .then(data => {
         data.forEach(hive => {
           let index = this.globalHives.findIndex((h) => h.id === hive.id);
           // Check if the object with the specified property value exists in the array
