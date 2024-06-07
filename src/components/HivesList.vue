@@ -10,7 +10,7 @@ import HiveItem from './HiveItem.vue'
 <template>
   <ul id="hives-list"> {{ hiveListTitle }}
     <HiveItem
-      v-for="hive in hives"
+      v-for="hive in globalHives"
       :key="hive.id"
       :name="hive.name"
       :weight="hive.weight"
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       hiveListTitle: 'Hives List',
-      hives: []
+      hives: [],
+      globalHives: this.globalHives
     }
   },
   created() {
@@ -35,15 +36,15 @@ export default {
   mounted() {
     console.log("mounted bloc");
     this.fetchDataFromApi();
-    console.log(this.hives);
+    console.log(this.globalHives);
   },
   methods: {
     fetchDataFromApi() {
       fetch("http://127.0.0.1:3000/api/v1/hives")
         .then(response => response.json())
         .then(data => {
-          console.log(data);
-          this.hives = data;
+          console.log(data[0]);
+          this.globalHives.push(...data);
       });
     }
   },

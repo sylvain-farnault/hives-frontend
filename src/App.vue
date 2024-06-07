@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import GlobalGreetings from './components/GlobalGreetings.vue'
+import HiveForm from './components/HiveForm.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import GlobalGreetings from './components/GlobalGreetings.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+      <HiveForm />
     </div>
   </header>
 
