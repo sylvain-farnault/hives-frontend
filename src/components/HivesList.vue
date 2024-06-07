@@ -43,8 +43,15 @@ export default {
       fetch("http://127.0.0.1:3000/api/v1/hives")
         .then(response => response.json())
         .then(data => {
-          console.log(data[0]);
-          this.globalHives.push(...data);
+        data.forEach(hive => {
+          let index = this.globalHives.findIndex((h) => h.id === hive.id);
+          // Check if the object with the specified property value exists in the array
+
+          if (index === -1) {
+            // If not found, push a new object with the desired properties
+            this.globalHives.push(hive);
+          }  
+        });
       });
     }
   },
