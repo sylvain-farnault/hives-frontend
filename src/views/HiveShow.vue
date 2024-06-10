@@ -1,11 +1,10 @@
 <script>
 export default {
 	name: "HiveShow",
-  props: ['name', 'weight', 'hiveIdProp'],
+  props: ['name', 'weight', 'hiveId'],
 	data() {
 		return {
-			hive: null,
-			hiveId: this.$route.params.id, // should come from props
+			hive: null
 		}
 	},
 	created() {
@@ -16,7 +15,6 @@ export default {
       fetch(`http://127.0.0.1:3000/api/v1/hives/${this.hiveId}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
 				this.hive = data;
       });
     }
@@ -34,13 +32,13 @@ export default {
 
 <template>
   <div class="show">
-		<br>
-		<hr>
-    <h1>{{ hiveName }}  (id:{{ hiveId }})</h1>
-		<br>
-		<br>
-    => Weight: {{ hiveWeight }} grams
-		<hr>	
+		<ul><h1>{{ hiveName }}</h1>
+			<li>Id: {{ hiveId }}</li>
+			<li>Weight: 
+				<span v-if="hiveWeight">{{ hiveWeight }} grams</span>
+				<span v-else><i>No Data</i></span>
+			</li>
+		</ul>
   </div>
 </template>
 

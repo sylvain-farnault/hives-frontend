@@ -1,7 +1,12 @@
 <script>
 export default {
   name: "HiveItem",
-  props: ['name', 'weight', "hive-id"]
+  props: ['name', 'weight', "hiveId"],
+  methods: {
+    hiveShowClicked(id) {
+      this.$emit("hive-show-clicked", id);
+    }
+  }
 }
 </script>
 
@@ -9,14 +14,8 @@ export default {
   <li>
     <strong>{{ name }}</strong> |
     <span v-if="weight">( {{ weight }} grams ) |</span>
-		<RouterLink :to="{ 
-      name: 'hive', 
-      params: { id: hiveId } }"
-                :name="name"
-                :weight="weight"
-                :hive-id="hiveId"
-    >
+    <button @click="hiveShowClicked(hiveId)">
       More >>
-    </RouterLink>
+    </button>
   </li>
 </template>

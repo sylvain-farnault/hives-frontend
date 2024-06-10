@@ -20,7 +20,7 @@ export default {
 	methods: {
 		submitForm(event) {
 			event.preventDefault();
-			this.postDataToApi({"name": this.name, "weight": this.weight, "user_id": 1});
+			this.postDataToApi({"name": this.name, "weight": this.weight, "user_id": 1}); // user_id key as I didn't update API
 			event.currentTarget.reset();
 		},
 

@@ -6,6 +6,7 @@
       :name="hive.name"
       :weight="hive.weight"
       :hive-id="hive.id"
+      @hive-show-clicked="relayHiveShowClicked"
     />
   </ul>
 </template>
@@ -24,16 +25,12 @@ export default {
     }
   },
   created() {
-    console.log('Created bloc');
-    console.log(this.fireUpdate);
   },
   mounted() {
-    console.log("Mounted bloc");
     this.fetchDataFromApi();
   },
   methods: {
     fetchDataFromApi() {
-      console.log("Start fetech ALL");
       fetch("http://127.0.0.1:3000/api/v1/hives")
       .then(response => response.json())
       .then(data => {
@@ -42,7 +39,7 @@ export default {
           // Check if the object with the specified id exists in the array
           
           if (index === -1) {
-            // If not found, push a new object with the desired properties
+            // If not found, push a new object
             this.hives.push(hive);
           }  
         });
@@ -50,6 +47,9 @@ export default {
           this.$emit("update-ok");
         }
       });
+    },
+    relayHiveShowClicked(hiveId) {
+      this.$emit("hive-show-clicked", hiveId);
     }
   },
   computed: {
@@ -59,7 +59,6 @@ export default {
   },
   watch: { 
       fireUpdate: function(newVal, oldVal) {
-          console.log('Prop fireUpdate changed: ', newVal, ' | was: ', oldVal);
           if (newVal === true) {
             this.fetchDataFromApi();
           }

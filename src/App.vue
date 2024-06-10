@@ -13,8 +13,11 @@
     </div>
   </header>
   <div>
-    <HivesList v-if="!hiveIdComputed" :fire-update="newHiveHasBeenPosted" @update-ok="resetUpdateListener" />
-    <HiveShow v-else :hive-id="hiveIdComputed" />
+    <HiveShow   v-if="hiveId" :hive-id="hiveId" />
+    <HivesList  v-else
+                :fire-update="newHiveHasBeenPosted" 
+                @update-ok="resetUpdateListener" 
+                @hive-show-clicked="displayHiveShow"/>
   </div>
 </template>
 
@@ -37,22 +40,16 @@ export default {
   methods: {
     displayHivesList(event) {
       event.preventDefault();
-      console.log(this.hiveId);
       this.hiveId = null;
-      console.log(this.hiveId);
     },
     newHivePosted() {
-      console.log("newHiveCallBack from App component");
       this.newHiveHasBeenPosted = true;
     },
     resetUpdateListener() {
-      console.log("resetUpdateListener from App component");
       this.newHiveHasBeenPosted = false;
-    }
-  },
-  computed: {
-    hiveIdComputed() {
-      return this.hiveId;
+    },
+    displayHiveShow(hiveId) {
+      this.hiveId = hiveId;
     }
   }
 }
