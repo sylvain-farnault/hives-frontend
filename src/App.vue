@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/hive.png" width="125" height="125" />
 
     <div class="wrapper">
       <GlobalGreetings msg="Hives Catalog" />
@@ -85,6 +85,7 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  color: goldenrod;
 }
 
 nav a:first-of-type {

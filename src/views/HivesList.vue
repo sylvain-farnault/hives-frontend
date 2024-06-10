@@ -1,5 +1,5 @@
 <template>
-  <ul id="hives-list"> <u>Hives List</u> :
+  <ul id="hives-list"><h2><u>Hives List</u> :</h2>
     <HiveItem
       v-for="hive in hivesListComputed"
       :key="hive.id"
