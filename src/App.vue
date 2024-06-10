@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import GlobalGreetings from './components/GlobalGreetings.vue'
-import HiveForm from './components/HiveForm.vue'
-</script>
-
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
@@ -12,14 +6,57 @@ import HiveForm from './components/HiveForm.vue'
       <GlobalGreetings msg="Hives Catalog" />
 
       <nav>
-        <RouterLink to="/">Go to index</RouterLink>
-        <HiveForm />
+        <!-- <RouterLink to="/">Go to index</RouterLink> -->
+        <a href="#" @click="displayHivesList">GO TO LIST</a>
+        <HiveForm @new-hive="newHivePosted" />
       </nav>
     </div>
   </header>
-
-  <RouterView />
+  <div>
+    <HivesList v-if="!hiveIdComputed" :fire-update="newHiveHasBeenPosted" @update-ok="resetUpdateListener" />
+    <HiveShow v-else :hive-id="hiveIdComputed" />
+  </div>
 </template>
+
+<script setup>
+import GlobalGreetings from './components/GlobalGreetings.vue'
+import HiveForm from './components/HiveForm.vue'
+import HivesList from './views/HivesList.vue'
+import HiveShow from './views/HiveShow.vue'
+</script>
+
+<script>
+export default {
+  data() {
+    return {
+      hiveId: null,
+      newHiveHasBeenPosted: false
+    }
+  },
+
+  methods: {
+    displayHivesList(event) {
+      event.preventDefault();
+      console.log(this.hiveId);
+      this.hiveId = null;
+      console.log(this.hiveId);
+    },
+    newHivePosted() {
+      console.log("newHiveCallBack from App component");
+      this.newHiveHasBeenPosted = true;
+    },
+    resetUpdateListener() {
+      console.log("resetUpdateListener from App component");
+      this.newHiveHasBeenPosted = false;
+    }
+  },
+  computed: {
+    hiveIdComputed() {
+      return this.hiveId;
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {

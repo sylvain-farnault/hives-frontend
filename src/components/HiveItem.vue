@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: "HiveItem",
   props: ['name', 'weight', "hive-id"]
 }
 </script>

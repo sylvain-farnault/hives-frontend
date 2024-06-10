@@ -1,21 +1,15 @@
 <script>
 export default {
-  props: ['name', 'weight'],
+	name: "HiveShow",
+  props: ['name', 'weight', 'hiveIdProp'],
 	data() {
 		return {
-			globalHives: this.globalHives,
-			hiveId: this.$route.params.id,
-			hive: this.globalHives.find( hive => hive.id == this.$route.params.id) // Using '==' as we compare Integer with String
+			hive: null,
+			hiveId: this.$route.params.id, // should come from props
 		}
 	},
 	created() {
-		console.log(this.globalHives);
-		console.log(this.hiveId);
-		console.log(this.hive);
-		if (this.hive === undefined ) {
-			console.log("Hive not def, let(s go fetch it");
-			this.fetchHiveFromApi();
-		}
+		this.fetchHiveFromApi();
 	},
 	methods: {
     fetchHiveFromApi() {
@@ -27,6 +21,14 @@ export default {
       });
     }
   },
+	computed: {
+		hiveName() {
+			return this.hive?.name || ''
+		},
+		hiveWeight() {
+			return this.hive?.weight || ''
+		}
+	}
 }
 </script>
 
@@ -34,9 +36,10 @@ export default {
   <div class="show">
 		<br>
 		<hr>
-    <h1>{{ hive.name }}  (id:{{ hiveId }})</h1>
+    <h1>{{ hiveName }}  (id:{{ hiveId }})</h1>
 		<br>
-    => Weight: {{ hive.weight }} grams
+		<br>
+    => Weight: {{ hiveWeight }} grams
 		<hr>	
   </div>
 </template>

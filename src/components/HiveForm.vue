@@ -1,24 +1,20 @@
 <template>
   <form @submit="submitForm">
 		Add a new hive: <br>
-		<input type="text" v-model="name" />
+		<input type="text" v-model="name" name="name"/>
 		<br>
-		<input type="number" v-model="weight" />
+		<input type="number" v-model="weight" name="weight" />
 		<br>
     <button>+ Add</button>
 	</form>
 </template>
 
-<script type="text/javascript">
-import HiveItem from './HiveItem.vue';
-import { createVNode, render } from 'vue'
-
+<script>
 export default {
 	data() {
 		return {
 			name: '',
-			weight: null,
-			globalHives: this.globalHives
+			weight: null
 		}
 	},
 	methods: {
@@ -42,14 +38,10 @@ export default {
 						// console.log('display form errors');
 					} else {
 						// console.log("Add new hive to dom");
-						this.addNewHiveToTheDom(data);
+						this.$emit("new-hive");
 					}
       })
 			.catch(error => console.log(error));	
-		},
-		addNewHiveToTheDom(hive) {
-			this.globalHives.push(hive);
-			// console.log(this.globalHives);
 		}
 	}
 }
