@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     fetchDataFromApi() {
-      fetch("http://127.0.0.1:3000/api/v1/hives")
+      fetch(this.hivesApiBaseUrl)
       .then(response => response.json())
       .then(data => {
         data.forEach(hive => {

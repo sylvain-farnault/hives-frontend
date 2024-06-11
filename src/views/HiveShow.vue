@@ -12,7 +12,7 @@ export default {
 	},
 	methods: {
     fetchHiveFromApi() {
-      fetch(`http://127.0.0.1:3000/api/v1/hives/${this.hiveId}`)
+      fetch(`${this.hivesApiBaseUrl}${this.hiveId}`)
       .then(response => response.json())
       .then(data => {
 				this.hive = data;
