@@ -1,8 +1,10 @@
 <template>
   <form @submit="submitForm">
 		Add a new hive: <br>
+		<label for="name">Name: </label>
 		<input type="text" v-model="name" name="name"/>
 		<br>
+		<label for="weight">Weight (grams): </label>
 		<input type="number" v-model="weight" name="weight" />
 		<br>
     <button>+ Add</button>
